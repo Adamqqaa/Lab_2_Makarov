@@ -15,7 +15,7 @@
         </Style>
     </Window.Resources>
     <Grid Background="#E3F0FF">
-        <Border Width="490" Height="290" HorizontalAlignment="Center" VerticalAlignment="Center"
+        <Border Width="490" Height="324" HorizontalAlignment="Center" VerticalAlignment="Center"
                 Background="White" CornerRadius="0
                 " Padding="30"
                 BorderBrush="#BBD3EA" BorderThickness="1">
@@ -32,7 +32,7 @@
                 <TextBlock Text="Доступные функции: управление пользователями, управление товарами, просмотр отчётов и статистики, настройка системы."
                            Style="{StaticResource InfoText}" TextWrapping="Wrap" Margin="0,14,0,0"/>
 
-                <Button Content="Выйти" Height="38" FontSize="15" Margin="0,24,0,0"
+                <Button Content="Выйти" Height="33" FontSize="15" Margin="0,24,0,0"
                         HorizontalAlignment="Right" Width="120"
                         Click="BtnLogout_Click"/>
             </StackPanel>
