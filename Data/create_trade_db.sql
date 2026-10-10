@@ -1,4 +1,3 @@
--- Лабораторная работа 2: создание БД Trade и импорт данных из импорт.xlsx
 IF DB_ID(N'Trade') IS NULL
 BEGIN
     CREATE DATABASE Trade;
@@ -8,7 +7,6 @@ GO
 USE Trade;
 GO
 
--- Таблица Roles
 IF OBJECT_ID(N'dbo.Roles', N'U') IS NOT NULL DROP TABLE dbo.Users;
 IF OBJECT_ID(N'dbo.Roles', N'U') IS NOT NULL DROP TABLE dbo.Roles;
 GO
@@ -31,14 +29,12 @@ CREATE TABLE dbo.Users
 );
 GO
 
--- Импорт данных из листа Roles
 INSERT INTO dbo.Roles (Id, Name)
 VALUES (1, N'Администратор'),
        (2, N'Менеджер'),
        (3, N'Авторизированный клиент');
 GO
 
--- Импорт данных из листа Users
 INSERT INTO dbo.Users (Id, FullName, Login, Password, RoleId)
 VALUES (1,  N'Никифорова Весения Николаевна',     N'94d5ous@gmail.com',      N'uzWC67', 1),
        (2,  N'Сазонов Руслан Германович',         N'uth4iz@mail.com',        N'2L6KZG', 1),
@@ -52,7 +48,6 @@ VALUES (1,  N'Никифорова Весения Николаевна',     N'9
        (10, N'Степанов Михаил Артёмович',         N'wpmrc3do@tutanota.com',  N'RSbvHv', 3);
 GO
 
--- Контрольная выборка
 SELECT u.Id, u.FullName, u.Login, u.Password, r.Name AS Role
 FROM dbo.Users u
 JOIN dbo.Roles r ON r.Id = u.RoleId
