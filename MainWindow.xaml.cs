@@ -69,13 +69,6 @@ public partial class MainWindow : Window
         }
     }
 
-    private void BtnCancel_Click(object sender, RoutedEventArgs e)
-    {
-        TxtLogin.Clear();
-        PwdPassword.Clear();
-        TxtError.Visibility = Visibility.Collapsed;
-        TxtLogin.Focus();
-    }
 
     private void ShowError(string message)
     {

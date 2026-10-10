@@ -47,9 +47,7 @@
                     <Button x:Name="BtnLogin" Grid.Column="0" Content="Войти"
                             Height="38" FontSize="15" FontWeight="SemiBold"
                             Click="BtnLogin_Click"
-                            Background="#1A73E8" Foreground="White" BorderThickness="0"/>
-                    <Button Grid.Column="2" Content="Отмена" Height="38" FontSize="15"
-                            Click="BtnCancel_Click"/>
+                            Background="#1A73E8" Foreground="White" BorderThickness="0" Grid.ColumnSpan="3"/>
                 </Grid>
             </StackPanel>
         </Border>
