@@ -1,24 +1,85 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Lab_2.Data;
+using Lab_2.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace Lab_2
+namespace Lab_2;
+
+/// <summary>
+/// Окно авторизации (логин + пароль).
+/// После успешного входа открывается форма, соответствующая роли пользователя.
+/// </summary>
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public MainWindow()
     {
-        public MainWindow()
+        InitializeComponent();
+        TxtLogin.Focus();
+    }
+
+    private void PwdPassword_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter)
+            BtnLogin_Click(sender, e);
+    }
+
+    private void BtnLogin_Click(object sender, RoutedEventArgs e)
+    {
+        TxtError.Visibility = Visibility.Collapsed;
+
+        string login = TxtLogin.Text.Trim();
+        string password = PwdPassword.Password;
+
+        if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
         {
-            InitializeComponent();
+            ShowError("Введите логин и пароль.");
+            return;
         }
+
+        try
+        {
+            using var db = TradeContextFactory.Create();
+
+            User? user = db.Users
+                .Include(u => u.Role)
+                .FirstOrDefault(u => u.Login == login && u.Password == password);
+
+            if (user is null)
+            {
+                ShowError("Неверный логин или пароль.");
+                return;
+            }
+
+            // В зависимости от роли открываем разные формы
+            Window roleWindow = user.Role.Name.Trim() switch
+            {
+                "Администратор" => new Windows.AdminWindow(user),
+                "Менеджер" => new Windows.ManagerWindow(user),
+                _ => new Windows.ClientWindow(user)
+            };
+
+            roleWindow.Show();
+            Application.Current.MainWindow = roleWindow;
+            Close();
+        }
+        catch (Exception ex)
+        {
+            ShowError("Ошибка подключения к базе данных: " + ex.Message);
+        }
+    }
+
+    private void BtnCancel_Click(object sender, RoutedEventArgs e)
+    {
+        TxtLogin.Clear();
+        PwdPassword.Clear();
+        TxtError.Visibility = Visibility.Collapsed;
+        TxtLogin.Focus();
+    }
+
+    private void ShowError(string message)
+    {
+        TxtError.Text = message;
+        TxtError.Visibility = Visibility.Visible;
     }
 }

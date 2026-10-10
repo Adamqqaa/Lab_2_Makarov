@@ -1,0 +1,41 @@
+<Window x:Class="Lab_2.Windows.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab_2.Windows"
+        mc:Ignorable="d"
+        Title="Администратор" Width="560" Height="360"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        FontFamily="Segoe UI" FontSize="14">
+    <Window.Resources>
+        <Style x:Key="InfoText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#555555"/>
+            <Setter Property="Margin" Value="0,4,0,4"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#E3F0FF">
+        <Border Width="490" Height="290" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Background="White" CornerRadius="0
+                " Padding="30"
+                BorderBrush="#BBD3EA" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Text="Форма администратора" FontSize="24" FontWeight="SemiBold"
+                           Foreground="#1557A0" HorizontalAlignment="Center"/>
+                <TextBlock Text="Панель управления пользователями и системой" Foreground="#8A8A8A"
+                           HorizontalAlignment="Center" Margin="0,2,0,14"/>
+
+                <TextBlock x:Name="TxtFullName" Style="{StaticResource InfoText}" FontSize="16" FontWeight="SemiBold"/>
+                <TextBlock x:Name="TxtLogin" Style="{StaticResource InfoText}"/>
+                <TextBlock x:Name="TxtRole" Style="{StaticResource InfoText}" Foreground="#1557A0" FontWeight="SemiBold" Margin="0,10,0,0"/>
+
+                <TextBlock Text="Доступные функции: управление пользователями, управление товарами, просмотр отчётов и статистики, настройка системы."
+                           Style="{StaticResource InfoText}" TextWrapping="Wrap" Margin="0,14,0,0"/>
+
+                <Button Content="Выйти" Height="38" FontSize="15" Margin="0,24,0,0"
+                        HorizontalAlignment="Right" Width="120"
+                        Click="BtnLogout_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

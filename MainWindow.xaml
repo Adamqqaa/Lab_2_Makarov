@@ -5,8 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab_2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Авторизация — Лабораторная работа №2"
+        Width="440" Height="420"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        FontFamily="Segoe UI" FontSize="14">
+    <Window.Resources>
+        <Style x:Key="FieldLabel" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#555555"/>
+            <Setter Property="Margin" Value="0,10,0,4"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#EEF2F7">
+        <Border Width="370" Height="350" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Background="White" CornerRadius="12" Padding="28"
+                BorderBrush="#D0D7E2" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Text="Авторизация" FontSize="24" FontWeight="SemiBold"
+                           HorizontalAlignment="Center" />
+                <TextBlock Text="Введите логин и пароль" Foreground="#8A8A8A"
+                           HorizontalAlignment="Center" Margin="0,2,0,10"/>
 
+                <TextBlock Text="Логин" Style="{StaticResource FieldLabel}"/>
+                <TextBox x:Name="TxtLogin" Height="34" FontSize="14"
+                         VerticalContentAlignment="Center" Padding="8,4"/>
+
+                <TextBlock Text="Пароль" Style="{StaticResource FieldLabel}"/>
+                <PasswordBox x:Name="PwdPassword" Height="34" FontSize="14"
+                             VerticalContentAlignment="Center" Padding="8,4"
+                             KeyDown="PwdPassword_KeyDown"/>
+
+                <TextBlock x:Name="TxtError" Foreground="#C62828" TextWrapping="Wrap"
+                           Margin="0,12,0,0" Visibility="Collapsed"/>
+
+                <Grid Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="16"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="BtnLogin" Grid.Column="0" Content="Войти"
+                            Height="38" FontSize="15" FontWeight="SemiBold"
+                            Click="BtnLogin_Click"
+                            Background="#1A73E8" Foreground="White" BorderThickness="0"/>
+                    <Button Grid.Column="2" Content="Отмена" Height="38" FontSize="15"
+                            Click="BtnCancel_Click"/>
+                </Grid>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
