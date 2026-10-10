@@ -2,11 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Lab_2.Data;
 
-/// <summary>
-/// Фабрика для создания экземпляра TradeContext со строкой подключения к БД Trade.
-/// Класс сгенерированный командой Scaffold-DbContext не изменяется —
-/// параметры подключаются здесь.
-/// </summary>
+
 public static class TradeContextFactory
 {
     // Строка подключения к SQL Server Express (см. Data\create_trade_db.sql)

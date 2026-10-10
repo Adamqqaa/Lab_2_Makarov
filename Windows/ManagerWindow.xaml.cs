@@ -3,7 +3,6 @@ using Lab_2.Models;
 
 namespace Lab_2.Windows;
 
-/// <summary>Форма, открываемая для пользователя с ролью «Менеджер».</summary>
 public partial class ManagerWindow : Window
 {
     public ManagerWindow(User user)

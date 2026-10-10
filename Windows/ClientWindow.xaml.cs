@@ -3,7 +3,6 @@ using Lab_2.Models;
 
 namespace Lab_2.Windows;
 
-/// <summary>Форма, открываемая для пользователя с ролью «Авторизированный клиент».</summary>
 public partial class ClientWindow : Window
 {
     public ClientWindow(User user)

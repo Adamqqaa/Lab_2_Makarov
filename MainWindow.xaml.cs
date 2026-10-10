@@ -6,10 +6,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Lab_2;
 
-/// <summary>
-/// Окно авторизации (логин + пароль).
-/// После успешного входа открывается форма, соответствующая роли пользователя.
-/// </summary>
 public partial class MainWindow : Window
 {
     public MainWindow()
